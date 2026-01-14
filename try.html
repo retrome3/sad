@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Calculator Documentation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background: #f9f9f9;
+        color: #333;
+    }
+    h1, h2, h3 {
+        color: #004080;
+    }
+    h1 {
+        border-bottom: 2px solid #004080;
+        padding-bottom: 5px;
+    }
+    pre {
+        background: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    code {
+        font-family: monospace;
+        background: #eee;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    ul, ol {
+        margin: 10px 0 10px 20px;
+    }
+    .mermaid {
+        text-align: center;
+        margin: 20px 0;
+    }
+</style>
+<!-- Include Mermaid for flowcharts -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+<body>
+
+<h1>PHASE 1: REQUIREMENT ANALYSIS</h1>
+
+<h2>Step 1: System Features</h2>
+<ul>
+    <li>Accept user input (two numbers and an operator)</li>
+    <li>Support addition (+), subtraction (−), multiplication (×), and division (÷)</li>
+    <li>Validate operator and input format</li>
+    <li>Prevent division by zero</li>
+    <li>Display calculation result</li>
+    <li>Reject invalid input</li>
+</ul>
+
+<h2>Step 2: Identify Users and System Needs</h2>
+<h3>Users:</h3>
+<ul>
+    <li>Students, beginners, or anyone needing quick arithmetic</li>
+    <li>Anyone using a terminal or command-line interface</li>
+</ul>
+
+<h3>System Purpose:</h3>
+<ul>
+    <li>Perform arithmetic calculations and handle errors for invalid input</li>
+</ul>
+
+<h2>Step 3: Functional and Non-Functional Requirements</h2>
+<h3>Functional Requirements:</h3>
+<ul>
+    <li>Accept two numeric inputs and one operator from the user</li>
+    <li>Perform addition, subtraction, multiplication, and division</li>
+    <li>Prevent division by zero</li>
+    <li>Display the calculation result</li>
+    <li>Reject invalid inputs or unsupported operators</li>
+</ul>
+
+<h3>Non-Functional Requirements:</h3>
+<ul>
+    <li>Run on a command-line interface</li>
+    <li>Respond to user input immediately (fast execution)</li>
+    <li>Handle errors gracefully without crashing</li>
+    <li>Simple and easy-to-use interface</li>
+    <li>Portable across systems with a C compiler</li>
+</ul>
+
+<hr>
+
+<h1>PHASE 2: SYSTEM ANALYSIS / DESIGN</h1>
+
+<h2>Task: Identify requirements and design how the program will work</h2>
+<h3>Design Steps:</h3>
+<ol>
+    <li>Input two numbers and an operator</li>
+    <li>Validate input and operator</li>
+    <li>Perform calculation based on the operator</li>
+    <li>Display result</li>
+</ol>
+
+<h3>Examples:</h3>
+<pre>
+Input: 5 + 3
+Output: 8.00
+
+Input: 5 / 0
+Output: Error: division by zero
+</pre>
+
+<h3>Flowchart</h3>
+<div class="mermaid">
+flowchart TD
+    A[Start] --> B[Input two numbers and an operator]
+    B --> C[Validate input and operator]
+    C --> D{Is input valid?}
+    D -- No --> E[Display error message]
+    D -- Yes --> F[Perform calculation]
+    F --> G[Display result]
+    G --> H[End]
+    E --> H
+</div>
+
+<h2>Algorithm in Pseudocode</h2>
+<pre>
+START
+   PROMPT "Enter expression (e.g. 5 + 3):"
+   READ num1, op, num2
+
+   IF input is not in the format number operator number THEN
+       DISPLAY "Invalid input"
+       END
+   ENDIF
+
+   IF op NOT IN ['+', '-', '*', '/'] THEN
+       DISPLAY "Unsupported operator"
+       END
+   ENDIF
+
+   IF op = '/' AND num2 = 0 THEN
+       DISPLAY "Error: division by zero"
+       END
+   ENDIF
+
+   IF op = '+' THEN
+       result = num1 + num2
+   ELSE IF op = '-' THEN
+       result = num1 - num2
+   ELSE IF op = '*' THEN
+       result = num1 * num2
+   ELSE IF op = '/' THEN
+       result = num1 / num2
+   ENDIF
+
+   DISPLAY "Result: ", result
+END
+</pre>
+
+<h2>Algorithm: Digital Calculator</h2>
+<ol>
+    <li>Start</li>
+    <li>Prompt the user: "Enter expression (e.g. 5 + 3)"</li>
+    <li>Read first number → num1</li>
+    <li>Read operator → op</li>
+    <li>Read second number → num2</li>
+    <li><strong>Validate input:</strong> If input format is wrong → display "Invalid input" → End</li>
+    <li><strong>Validate operator:</strong> If op is not +, -, *, / → display "Unsupported operator" → End</li>
+    <li><strong>Check division by zero:</strong> If op = '/' and num2 = 0 → display "Error: division by zero" → End</li>
+    <li><strong>Perform calculation:</strong> 
+        <ul>
+            <li>If op = '+' → result = num1 + num2</li>
+            <li>If op = '-' → result = num1 - num2</li>
+            <li>If op = '*' → result = num1 * num2</li>
+            <li>If op = '/' → result = num1 / num2</li>
+        </ul>
+    </li>
+    <li>Display "Result: " followed by result</li>
+    <li>End</li>
+</ol>
+
+</body>
+</html>
